@@ -1,0 +1,65 @@
+apply plugin: "java"
+apply plugin: 'com.jfrog.artifactory'
+apply plugin: 'maven-publish'
+
+sourceCompatibility = 1.6
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+sourceSets.main.resources.srcDirs = [ "assets/" ]
+
+// load keystore
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+def libraryGroupId = 'com.github.skyosuke.gdxutils'
+def libraryArtifactId = 'utils'
+def libraryVersion = version
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            groupId libraryGroupId
+            version libraryVersion
+            artifactId libraryArtifactId
+        }
+    }
+}
+
+artifactory {
+    contextUrl = 'http://skyousuke.thddns.net:6613/artifactory'
+    publish {
+        repository {
+            repoKey = 'gdx-release'
+            username = keystoreProperties['artifactory_username']
+            password = keystoreProperties['artifactory_password']
+            maven = true
+        }
+        defaults {
+            publications('mavenJava')
+        }
+    }
+}
+
+task benchmarks(dependsOn: perfClasses) {
+
+    apply plugin: 'com.github.johnrengelman.shadow'
+
+    shadowJar {
+        classifier = "benchmarks"
+
+        from sourceSets.perf.output
+        from sourceSets.main.output
+        from project.configurations.perfRuntime
+
+        manifest {
+            attributes "Main-Class": "org.openjdk.jmh.Main"
+        }
+    }
+
+    doLast {
+        shadowJar.execute()
+    }
+
+}

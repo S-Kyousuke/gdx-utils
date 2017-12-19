@@ -1,0 +1,89 @@
+
+player.png
+size: 2048,2048
+format: RGBA8888
+filter: MipMapLinearNearest,Nearest
+repeat: none
+hit
+  rotate: false
+  xy: 492, 751
+  size: 470, 782
+  orig: 470, 782
+  offset: 0, 0
+  index: -1
+jump_1
+  rotate: false
+  xy: 1, 768
+  size: 489, 765
+  orig: 489, 765
+  offset: 0, 0
+  index: -1
+jump_2
+  rotate: false
+  xy: 1, 1
+  size: 489, 765
+  orig: 489, 765
+  offset: 0, 0
+  index: -1
+run_1
+  rotate: false
+  xy: 1456, 789
+  size: 448, 744
+  orig: 448, 744
+  offset: 0, 0
+  index: -1
+run_2
+  rotate: false
+  xy: 984, 88
+  size: 448, 744
+  orig: 448, 744
+  offset: 0, 0
+  index: -1
+run_3
+  rotate: false
+  xy: 1434, 43
+  size: 448, 744
+  orig: 448, 744
+  offset: 0, 0
+  index: -1
+stand_1
+  rotate: false
+  xy: 492, 50
+  size: 490, 699
+  orig: 490, 699
+  offset: 0, 0
+  index: -1
+stand_2
+  rotate: false
+  xy: 964, 834
+  size: 490, 699
+  orig: 490, 699
+  offset: 0, 0
+  index: -1
+
+player2.png
+size: 2048,1024
+format: RGBA8888
+filter: MipMapLinearNearest,Nearest
+repeat: none
+run_4
+  rotate: false
+  xy: 1, 1
+  size: 448, 744
+  orig: 448, 744
+  offset: 0, 0
+  index: -1
+run_5
+  rotate: false
+  xy: 451, 1
+  size: 448, 744
+  orig: 448, 744
+  offset: 0, 0
+  index: -1
+run_6
+  rotate: false
+  xy: 901, 1
+  size: 448, 744
+  orig: 448, 744
+  offset: 0, 0
+  index: -1
