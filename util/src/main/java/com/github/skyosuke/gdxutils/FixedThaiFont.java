@@ -34,8 +34,8 @@ public class FixedThaiFont extends BitmapFont {
     private static final char PO_PLA = 0x0E1B;
     private static final char FO_FA = 0x0E1D;
     private static final char FO_FAN = 0x0E1F;
-    private IntMap<IntMap<Glyph>> fixedGlyphs;
 
+    private final IntMap<IntMap<Glyph>> fixedGlyphs;
     private static char[] tempCharArray = new char[0];
 
     public FixedThaiFont(String fontFileInternalPath, FixedThaiFontParameter parameter) {

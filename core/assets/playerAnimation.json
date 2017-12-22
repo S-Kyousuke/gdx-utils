@@ -2,36 +2,62 @@
   "jump": {
     "playMode": "normal",
     "frameDuration": 0.25,
-    "regions": [
-      "jump_2",
-      "jump_1"
-    ]
+    "regionScale": 1.0,
+    "regions": {
+      "jump_1": {
+        "pivot": [0.0, 0.0]
+      },
+      "jump_2": {
+        "pivot": [0.0, 0.0]
+      }
+    }
   },
   "stand": {
     "playMode": "loop",
-    "frameDuration": 0.1,
-    "regions": [
-      "stand_1",
-      "stand_2"
-    ]
+    "frameDuration": 0.2,
+    "regionScale": 0.15,
+    "regions": {
+      "stand_1": {
+        "pivot": [-100.0, 0.0]
+      },
+      "stand_2": {
+        "pivot": [-100.0, 0.0]
+      }
+    }
   },
   "run": {
     "playMode": "loop",
     "frameDuration": 0.1,
-    "regions": [
-      "run_1",
-      "run_2",
-      "run_3",
-      "run_4",
-      "run_5",
-      "run_6"
-    ]
+    "regionScale": 0.5,
+    "regions": {
+      "run_1": {
+        "pivot": [0.0, 0.0]
+      },
+      "run_2": {
+        "pivot": [0.0, 0.0]
+      },
+      "run_3": {
+        "pivot": [0.0, 0.0]
+      },
+      "run_4": {
+        "pivot": [0.0, 0.0]
+      },
+      "run_5": {
+        "pivot": [0.0, 0.0]
+      },
+      "run_6": {
+        "pivot": [0.0, 0.0]
+      }
+    }
   },
   "hit": {
     "playMode": "normal",
     "frameDuration": 0.1,
-    "regions": [
-      "hit"
-    ]
+    "regionScale": 0.5,
+    "regions": {
+      "hit": {
+        "pivot": [0.0, 0.0]
+      }
+    }
   }
 }

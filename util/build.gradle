@@ -1,22 +1,26 @@
 apply plugin: "java"
 apply plugin: 'com.jfrog.artifactory'
 apply plugin: 'maven-publish'
+apply plugin: 'maven'
+
+group = 'com.github.skyosuke'
+
+install {
+    repositories.mavenInstaller {
+        pom.version = version
+        pom.artifactId = 'gdx-utils'
+    }
+}
 
 sourceCompatibility = 1.6
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 sourceSets.main.resources.srcDirs = [ "assets/" ]
 
-// load keystore
-def keystorePropertiesFile = rootProject.file("keystore.properties")
-def keystoreProperties = new Properties()
-keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-
-def libraryGroupId = 'com.github.skyosuke.gdxutils'
-def libraryArtifactId = 'utils'
-def libraryVersion = version
-
 publishing {
+    def libraryGroupId = 'com.github.skyosuke'
+    def libraryArtifactId = 'gdx-utils'
+    def libraryVersion = version
     publications {
         mavenJava(MavenPublication) {
             from components.java
@@ -28,6 +32,10 @@ publishing {
 }
 
 artifactory {
+    def keystorePropertiesFile = rootProject.file("keystore.properties")
+    def keystoreProperties = new Properties()
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
     contextUrl = 'http://skyousuke.thddns.net:6613/artifactory'
     publish {
         repository {

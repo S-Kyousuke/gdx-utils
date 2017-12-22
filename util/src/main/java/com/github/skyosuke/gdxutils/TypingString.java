@@ -4,8 +4,8 @@ import com.badlogic.gdx.utils.StringBuilder;
 
 public class TypingString implements CharSequence {
 
-    private CharSequence fullCharSequence;
-    private StringBuilder stringBuilder = new StringBuilder();
+    private final CharSequence fullCharSequence;
+    private final StringBuilder stringBuilder = new StringBuilder();
     private float characterPerSecond;
     private float whitespaceSpeedScale;
     private float timeAccumulator;

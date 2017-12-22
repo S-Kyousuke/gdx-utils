@@ -1,3 +1,8 @@
+## other unneccessary project
+/core/assets/**
+/core/src/**
+/desktop/src/**
+
 ## util module
 util/build/
 util/out/
