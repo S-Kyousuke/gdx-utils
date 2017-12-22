@@ -1,8 +1,8 @@
-package com.github.skyosuke.gdxutils;
+package com.github.skyosuke.gdxutils.thaifont;
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
-public enum ThaiFont {
+public enum ThaiFonts {
     INSTANCE;
 
     public BitmapFont createFont(Font font) {
@@ -10,24 +10,24 @@ public enum ThaiFont {
             throw new IllegalArgumentException("font cannot be null!");
 
         BitmapFont bitmapFont;
-        FixedThaiFont.FixedThaiFontParameter parameter;
+        ThaiFont.ThaiFontParameter parameter;
 
         switch (font) {
             case CHIANGSAEN_16:
-                parameter = new FixedThaiFont.FixedThaiFontParameter();
+                parameter = new ThaiFont.ThaiFontParameter();
                 parameter.horizontalOffset = -2;
                 parameter.verticalOffset = 4;
                 parameter.yoYingTrim = 3;
                 parameter.thoThanTrim = 4;
-                bitmapFont = new FixedThaiFont("font/chiangsaen-16.fnt", parameter);
+                bitmapFont = new ThaiFont("font/chiangsaen-16.fnt", parameter);
                 return bitmapFont;
             case CHIANGSAEN_64:
-                parameter = new FixedThaiFont.FixedThaiFontParameter();
+                parameter = new ThaiFont.ThaiFontParameter();
                 parameter.horizontalOffset = -6;
                 parameter.verticalOffset = 12;
                 parameter.yoYingTrim = 10;
                 parameter.thoThanTrim = 13;
-                bitmapFont = new FixedThaiFont("font/chiangsaen-64.fnt", parameter);
+                bitmapFont = new ThaiFont("font/chiangsaen-64.fnt", parameter);
                 return bitmapFont;
         }
 

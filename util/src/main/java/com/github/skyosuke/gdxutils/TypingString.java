@@ -56,7 +56,7 @@ public class TypingString implements CharSequence {
         this.listener = listener;
     }
 
-    public final boolean isFinished() {
+    public boolean isFinished() {
         return characterIndex == fullCharSequence.length();
     }
 

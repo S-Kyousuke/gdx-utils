@@ -3,7 +3,7 @@ apply plugin: 'com.jfrog.artifactory'
 apply plugin: 'maven-publish'
 apply plugin: 'maven'
 
-group = 'com.github.skyosuke'
+group = 'com.github.skyousuke'
 
 install {
     repositories.mavenInstaller {
@@ -18,7 +18,7 @@ sourceCompatibility = 1.6
 sourceSets.main.resources.srcDirs = [ "assets/" ]
 
 publishing {
-    def libraryGroupId = 'com.github.skyosuke'
+    def libraryGroupId = 'com.github.skyousuke'
     def libraryArtifactId = 'gdx-utils'
     def libraryVersion = version
     publications {
