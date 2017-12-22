@@ -32,12 +32,14 @@ publishing {
 }
 
 artifactory {
-    def keystorePropertiesFile = rootProject.file("keystore.properties")
-    def keystoreProperties = new Properties()
-    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-
     contextUrl = 'http://skyousuke.thddns.net:6613/artifactory'
     publish {
+        if (!rootProject.file("keystore.properties").exists()) {
+            return
+        }
+        def keystorePropertiesFile = rootProject.file("keystore.properties")
+        def keystoreProperties = new Properties()
+        keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
         repository {
             repoKey = 'gdx-release'
             username = keystoreProperties['artifactory_username']
