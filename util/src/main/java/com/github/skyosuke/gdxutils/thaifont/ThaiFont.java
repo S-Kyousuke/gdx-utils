@@ -1,15 +1,37 @@
 package com.github.skyosuke.gdxutils.thaifont;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.BitmapFontCache;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.utils.Array;
+
 
 public class ThaiFont extends BitmapFont {
 
-    private final ThaiFontParameter parameter;
+    private final ThaiFontLoader.ThaiFontParameter parameter;
 
-    public ThaiFont(String fontFileInternalPath, ThaiFontParameter parameter) {
-        super(Gdx.files.internal(fontFileInternalPath));
+    public ThaiFont(String fontFileInternalPath, ThaiFontLoader.ThaiFontParameter parameter) {
+        this(Gdx.files.internal(fontFileInternalPath), parameter);
+    }
+
+    public ThaiFont(FileHandle fontFile, ThaiFontLoader.ThaiFontParameter parameter) {
+        super(fontFile);
+        this.parameter = parameter;
+        getThaiFontCache().config(parameter);
+    }
+
+    /**
+     * The {@link #dispose()} method will not dispose the bitmap font in this case! */
+    public ThaiFont(BitmapFont bitmapFont, ThaiFontLoader.ThaiFontParameter parameter) {
+        this(bitmapFont.getData(), bitmapFont.getRegions(), parameter);
+    }
+
+    /**
+     * The {@link #dispose()} method will not dispose the region's texture in this case! */
+    public ThaiFont(BitmapFontData data, Array<TextureRegion> regions, ThaiFontLoader.ThaiFontParameter parameter) {
+        super(data, regions, true);
         this.parameter = parameter;
         getThaiFontCache().config(parameter);
     }
@@ -23,11 +45,6 @@ public class ThaiFont extends BitmapFont {
         return new ThaiFontCache(this, parameter);
     }
 
-    public static class ThaiFontParameter {
-        public int horizontalOffset;
-        public int verticalOffset;
-        public int yoYingTrim;
-        public int thoThanTrim;
-    }
+
 
 }

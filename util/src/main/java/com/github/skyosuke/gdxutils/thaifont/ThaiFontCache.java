@@ -14,7 +14,7 @@ public class ThaiFontCache extends BitmapFontCache {
 
     private final IntMap<IntMap<BitmapFont.Glyph>> fixedGlyphs;
 
-    public ThaiFontCache(BitmapFont font, ThaiFont.ThaiFontParameter parameter) {
+    public ThaiFontCache(BitmapFont font, ThaiFontLoader.ThaiFontParameter parameter) {
         super(font);
         fixedGlyphs = new IntMap<IntMap<BitmapFont.Glyph>>(16);
         if (parameter != null)
@@ -27,7 +27,7 @@ public class ThaiFontCache extends BitmapFontCache {
         super.addText(layout, x, y);
     }
 
-    public void config(ThaiFont.ThaiFontParameter parameter) {
+    public void config(ThaiFontLoader.ThaiFontParameter parameter) {
         configHorizontalOffset(parameter.horizontalOffset);
         configVerticalOffset(parameter.verticalOffset);
         configYoYing(parameter.yoYingTrim);
@@ -134,11 +134,12 @@ public class ThaiFontCache extends BitmapFontCache {
     }
 
     private void fixUpper(GlyphLayout.GlyphRun run, int runIndex) {
-        final int id = getGlyphId(run, runIndex);
-        final int previousId = getGlyphId(run, runIndex - 1);
         final int penultimateId = getGlyphId(run, runIndex - 2);
+        final int previousId = getGlyphId(run, runIndex - 1);
+        final int id = getGlyphId(run, runIndex);
+        final int nextId = getGlyphId(run, runIndex + 1);
 
-        final int characterType = findCharacterType(penultimateId, previousId, id);
+        final int characterType = findCharacterType(penultimateId, previousId, id, nextId);
         run.glyphs.set(runIndex, getGlyph(id, characterType));
     }
 
@@ -152,12 +153,12 @@ public class ThaiFontCache extends BitmapFontCache {
             run.glyphs.set(runIndex - 1, getGlyph(previousId, CharacterTypes.NO_LOWER_CURVES));
     }
 
-    private static int findCharacterType(int penultimateId, int previousId, int id) {
+    private static int findCharacterType(int penultimateId, int previousId, int id, int nextId) {
         if (isAboveCharacter(id)) {
             return findAboveCharacterType(previousId);
         }
         if (isTopCharacter(id)) {
-            return findTopCharacterType(penultimateId, previousId);
+            return findTopCharacterType(penultimateId, previousId, nextId);
         }
         return CharacterTypes.DEFAULT;
     }
@@ -169,8 +170,8 @@ public class ThaiFontCache extends BitmapFontCache {
             return CharacterTypes.ABOVE;
     }
 
-    private static int findTopCharacterType(int penultimateId, int previousId) {
-        if (isAboveCharacter(previousId)) {
+    private static int findTopCharacterType(int penultimateId, int previousId, int nextTd) {
+        if (isAboveCharacter(previousId) || nextTd == ThaiUnicode.SARA_AM) {
             if (isTallCharacter(penultimateId))
                 return CharacterTypes.TOP_LEFT;
             else

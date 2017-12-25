@@ -1,41 +1,66 @@
 package com.github.skyosuke.gdxutils.thaifont;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetDescriptor;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 public enum ThaiFonts {
-    INSTANCE;
+    CHIANGSAEN_16,
+    CHIANGSAEN_20,
+    CHIANGSAEN_64;
 
-    public BitmapFont createFont(Font font) {
-        if (font == null)
-            throw new IllegalArgumentException("font cannot be null!");
+    public BitmapFont createFont() {
+        return new ThaiFont(getFile(), getParameter());
+    }
 
-        BitmapFont bitmapFont;
-        ThaiFont.ThaiFontParameter parameter;
-
-        switch (font) {
+    public FileHandle getFile() {
+        switch (this) {
             case CHIANGSAEN_16:
-                parameter = new ThaiFont.ThaiFontParameter();
+                return Gdx.files.internal("font/chiangsaen-16.fnt");
+            case CHIANGSAEN_20:
+                return Gdx.files.internal("font/chiangsaen-20.fnt");
+            case CHIANGSAEN_64:
+                return Gdx.files.internal("font/chiangsaen-64.fnt");
+            default:
+                throw new IllegalStateException("Execution flow must not reach here!");
+        }
+    }
+
+    public ThaiFontLoader.ThaiFontParameter getParameter() {
+        ThaiFontLoader.ThaiFontParameter parameter = new ThaiFontLoader.ThaiFontParameter();
+        switch (this) {
+            case CHIANGSAEN_16:
                 parameter.horizontalOffset = -2;
                 parameter.verticalOffset = 4;
                 parameter.yoYingTrim = 3;
                 parameter.thoThanTrim = 4;
-                bitmapFont = new ThaiFont("font/chiangsaen-16.fnt", parameter);
-                return bitmapFont;
+                return parameter;
+            case CHIANGSAEN_20:
+                parameter.horizontalOffset = -3;
+                parameter.verticalOffset = 5;
+                parameter.yoYingTrim = 4;
+                parameter.thoThanTrim = 6;
+                return parameter;
             case CHIANGSAEN_64:
-                parameter = new ThaiFont.ThaiFontParameter();
                 parameter.horizontalOffset = -6;
                 parameter.verticalOffset = 12;
                 parameter.yoYingTrim = 10;
                 parameter.thoThanTrim = 13;
-                bitmapFont = new ThaiFont("font/chiangsaen-64.fnt", parameter);
-                return bitmapFont;
+                return parameter;
+            default:
+                throw new IllegalStateException("Execution flow must not reach here!");
         }
-
-        throw new IllegalStateException("Execution flow must not reach here!");
     }
 
-    public enum Font {
-        CHIANGSAEN_16,
-        CHIANGSAEN_64
+    public void loadTo(AssetManager manager) {
+        AssetDescriptor<ThaiFont> descriptor = new AssetDescriptor<ThaiFont>(getFile(), ThaiFont.class,  getParameter());
+        manager.load(descriptor);
+    }
+
+    public BitmapFont getFrom(AssetManager manager) {
+        AssetDescriptor<ThaiFont> descriptor = new AssetDescriptor<ThaiFont>(getFile(), ThaiFont.class);
+        return manager.get(descriptor);
     }
 }
