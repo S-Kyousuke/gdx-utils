@@ -9,6 +9,7 @@ buildscript {
     }
 
     dependencies {
+        classpath 'de.richsource.gradle.plugins:gwt-gradle-plugin:0.6'
         classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.0.1"
         classpath "com.github.jengelman.gradle.plugins:shadow:1.2.4"
     }
@@ -18,14 +19,14 @@ allprojects {
     apply plugin: "eclipse"
     apply plugin: "idea"
 
-    version = '0.0.13'
+    version = '0.0.14'
     ext {
         appName = "gdx-utils"
         gdxVersion = '1.9.8'
         roboVMVersion = '2.3.1'
         box2DLightsVersion = '1.4'
-        ashleyVersion = '1.7.0'
-        aiVersion = '1.8.0'
+        ashleyVersion = '1.7.3'
+        aiVersion = '1.8.1'
     }
 
     repositories {
@@ -44,7 +45,6 @@ project(":desktop") {
         compile project(":core")
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
-        
     }
 }
 
@@ -54,8 +54,20 @@ project(":core") {
     dependencies {
         compile project(":util")
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
-        compile "org.mockito:mockito-core:2.2.7"
-        
+    }
+}
+
+project(":html") {
+    apply plugin: "gwt"
+    apply plugin: "war"
+
+
+    dependencies {
+        compile project(":core")
+        compile "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
+        compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
+
     }
 }
 
@@ -69,7 +81,8 @@ project(":util") {
 
     dependencies {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
-        compile 'com.google.guava:guava:20.0'
+        compile 'com.google.guava:guava-gwt:20.0'
+        compile 'com.google.gwt:gwt-user:2.8.0'
 
         testCompile 'junit:junit:4.12'
         testCompile "org.mockito:mockito-core:2.2.7"
@@ -86,8 +99,22 @@ project(":util") {
     idea {
         module {
             scopes.PROVIDED.plus  += [ configurations.perfCompile ]
-            scopes.PROVIDED.minus += [ configurations.compile ]
+            scopes.PROVIDED.minus += [ configurations.compile ]  //exclude compile dependencies
         }
     }
-
 }
+
+project(":tool") {
+    apply plugin: "java"
+
+    dependencies {
+        compile project(":core")
+        compile files('../libs/object-explorer.jar')
+
+        compile "org.mockito:mockito-core:2.2.7"
+        compile "com.badlogicgames.gdx:gdx-backend-headless:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+    }
+}
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit trunk//EN" "http://google-web-toolkit.googlecode.com/svn/trunk/distro-source/core/src/gwt-module.dtd">
+
+<module>
+	<inherits name="com.google.common.base.Base" />
+    <super-source path="gdxutils/jre" />
+	<source path="gdxutils" />
+
+    <extend-configuration-property name="gdx.files.classpath" value="com/github/skyousuke/gdxutils/font/chiangsaen-16.fnt" />
+    <extend-configuration-property name="gdx.files.classpath" value="com/github/skyousuke/gdxutils/font/chiangsaen-16.png" />
+    <extend-configuration-property name="gdx.files.classpath" value="com/github/skyousuke/gdxutils/font/chiangsaen-20.fnt" />
+    <extend-configuration-property name="gdx.files.classpath" value="com/github/skyousuke/gdxutils/font/chiangsaen-20.png" />
+    <extend-configuration-property name="gdx.files.classpath" value="com/github/skyousuke/gdxutils/font/chiangsaen-64.fnt" />
+    <extend-configuration-property name="gdx.files.classpath" value="com/github/skyousuke/gdxutils/font/chiangsaen-64.png" />
+    <extend-configuration-property name="gdx.files.classpath" value="com/github/skyousuke/gdxutils/skin/default.atlas" />
+    <extend-configuration-property name="gdx.files.classpath" value="com/github/skyousuke/gdxutils/skin/default.json" />
+    <extend-configuration-property name="gdx.files.classpath" value="com/github/skyousuke/gdxutils/skin/default.fnt" />
+    <extend-configuration-property name="gdx.files.classpath" value="com/github/skyousuke/gdxutils/skin/default.png" />
+    <extend-configuration-property name="gdx.files.classpath" value="com/github/skyousuke/gdxutils/skin/default-thai.fnt" />
+    <extend-configuration-property name="gdx.files.classpath" value="com/github/skyousuke/gdxutils/skin/default-thai.png" />
+</module>

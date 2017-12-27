@@ -3,7 +3,7 @@ apply plugin: "java"
 sourceCompatibility = 1.6
 sourceSets.main.java.srcDirs = [ "src/" ]
 
-project.ext.mainClassName = "com.github.skyosuke.gdxutils.desktop.DesktopLauncher"
+project.ext.mainClassName = "com.github.skyousuke.gdxutils.desktop.DesktopLauncher"
 project.ext.assetsDir = new File("../core/assets")
 
 task run(dependsOn: classes, type: JavaExec) {
@@ -34,22 +34,16 @@ task dist(type: Jar) {
     }
 }
 
-dist.dependsOn classes
+task customDist(type: Jar) {
+    from files(sourceSets.main.output.classesDir)
+    from files(sourceSets.main.output.resourcesDir)
+    from {configurations.compile.collect {zipTree(it)}}
+    from files(project.assetsDir)
 
-eclipse {
-    project {
-        name = appName + "-desktop"
-        linkedResource name: 'assets', type: '2', location: 'PARENT-1-PROJECT_LOC/core/assets'
+    manifest {
+        attributes 'Main-Class': project.mainClassName
+        attributes 'Premain-Class': "com.github.skyousuke.gdxutils.desktop.ObjectSizeFetcher"
     }
 }
 
-task afterEclipseImport(description: "Post processing after project generation", group: "IDE") {
-  doLast {
-    def classpath = new XmlParser().parse(file(".classpath"))
-    new Node(classpath, "classpathentry", [ kind: 'src', path: 'assets' ])
-    def writer = new FileWriter(file(".classpath"))
-    def printer = new XmlNodePrinter(new PrintWriter(writer))
-    printer.setPreserveWhitespace(true)
-    printer.print(classpath)
-  }
-}
+dist.dependsOn classes

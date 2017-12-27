@@ -1,0 +1,69 @@
+{
+  "stand": {
+    "playMode": "loop",
+    "frameDuration": 0.3,
+    "regionScale": 2.0,
+    "regions": {
+      "partner4_stand_1": {
+        "pivot": [30.0, 30.0]
+      },
+      "partner4_stand_2": {
+        "pivot": [30.0, 30.0]
+      },
+      "partner4_stand_3": {
+        "pivot": [30.0, 30.0]
+      },
+      "partner4_stand_4": {
+        "pivot": [30.0, 30.0]
+      }
+    }
+  },
+  "walk": {
+    "playMode": "loop",
+    "frameDuration": 0.2,
+    "regionScale": 2.0,
+    "regions": {
+      "partner4_walk_1": {
+        "pivot": [30.0, 30.0]
+      },
+      "partner4_walk_2": {
+        "pivot": [30.0, 30.0]
+      },
+      "partner4_walk_3": {
+        "pivot": [30.0, 30.0]
+      },
+      "partner4_walk_4": {
+        "pivot": [30.0, 30.0]
+      }
+    }
+  },
+  "fly": {
+    "playMode": "loop",
+    "frameDuration": 0.5,
+    "regionScale": 2.0,
+    "regions": {
+      "partner4_jump_1": {
+        "pivot": [30.0, 30.0]
+      },
+      "partner4_jump_2": {
+        "pivot": [30.0, 30.0]
+      }
+    }
+  },
+  "attack": {
+    "playMode": "normal",
+    "frameDuration": 0.2,
+    "regionScale": 2.0,
+    "regions": {
+      "partner4_atk_1": {
+        "pivot": [63.0, 70.0]
+      },
+      "partner4_atk_2": {
+        "pivot": [32.0, 40.0]
+      },
+      "partner4_atk_3": {
+        "pivot": [32.0, 66.0]
+      }
+    }
+  }
+}

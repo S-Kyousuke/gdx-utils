@@ -12,10 +12,14 @@ install {
     }
 }
 
+sourceSets.main.resources.srcDirs = ["src/main/java"]
+
 sourceCompatibility = 1.6
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
-sourceSets.main.resources.srcDirs = [ "assets/" ]
+task sourceJar(type: Jar) {
+    from sourceSets.main.allSource
+}
 
 publishing {
     def libraryGroupId = 'com.github.skyousuke'
@@ -27,6 +31,10 @@ publishing {
             groupId libraryGroupId
             version libraryVersion
             artifactId libraryArtifactId
+
+            artifact sourceJar {
+                classifier "sources"
+            }
         }
     }
 }
