@@ -6,16 +6,16 @@
     <super-source path="gdxutils/jre" />
 	<source path="gdxutils" />
 
-    <extend-configuration-property name="gdx.files.classpath" value="com/github/skyousuke/gdxutils/font/chiangsaen-16.fnt" />
-    <extend-configuration-property name="gdx.files.classpath" value="com/github/skyousuke/gdxutils/font/chiangsaen-16.png" />
-    <extend-configuration-property name="gdx.files.classpath" value="com/github/skyousuke/gdxutils/font/chiangsaen-20.fnt" />
-    <extend-configuration-property name="gdx.files.classpath" value="com/github/skyousuke/gdxutils/font/chiangsaen-20.png" />
-    <extend-configuration-property name="gdx.files.classpath" value="com/github/skyousuke/gdxutils/font/chiangsaen-64.fnt" />
-    <extend-configuration-property name="gdx.files.classpath" value="com/github/skyousuke/gdxutils/font/chiangsaen-64.png" />
-    <extend-configuration-property name="gdx.files.classpath" value="com/github/skyousuke/gdxutils/skin/default.atlas" />
-    <extend-configuration-property name="gdx.files.classpath" value="com/github/skyousuke/gdxutils/skin/default.json" />
-    <extend-configuration-property name="gdx.files.classpath" value="com/github/skyousuke/gdxutils/skin/default.fnt" />
-    <extend-configuration-property name="gdx.files.classpath" value="com/github/skyousuke/gdxutils/skin/default.png" />
-    <extend-configuration-property name="gdx.files.classpath" value="com/github/skyousuke/gdxutils/skin/default-thai.fnt" />
-    <extend-configuration-property name="gdx.files.classpath" value="com/github/skyousuke/gdxutils/skin/default-thai.png" />
+    <extend-configuration-property name="gdx.files.classpath" value="font/chiangsaen-16.fnt" />
+    <extend-configuration-property name="gdx.files.classpath" value="font/chiangsaen-16.png" />
+    <extend-configuration-property name="gdx.files.classpath" value="font/chiangsaen-20.fnt" />
+    <extend-configuration-property name="gdx.files.classpath" value="font/chiangsaen-20.png" />
+    <extend-configuration-property name="gdx.files.classpath" value="font/chiangsaen-64.fnt" />
+    <extend-configuration-property name="gdx.files.classpath" value="font/chiangsaen-64.png" />
+    <extend-configuration-property name="gdx.files.classpath" value="skin/default.atlas" />
+    <extend-configuration-property name="gdx.files.classpath" value="skin/default.json" />
+    <extend-configuration-property name="gdx.files.classpath" value="skin/default.fnt" />
+    <extend-configuration-property name="gdx.files.classpath" value="skin/default.png" />
+    <extend-configuration-property name="gdx.files.classpath" value="skin/default-thai.fnt" />
+    <extend-configuration-property name="gdx.files.classpath" value="skin/default-thai.png" />
 </module>

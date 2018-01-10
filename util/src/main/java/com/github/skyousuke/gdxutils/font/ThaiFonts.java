@@ -18,11 +18,11 @@ public enum ThaiFonts {
     public FileHandle getFile() {
         switch (this) {
             case CHIANGSAEN_16:
-                return Gdx.files.internal("com/github/skyousuke/gdxutils/font/chiangsaen-16.fnt");
+                return Gdx.files.internal("font/chiangsaen-16.fnt");
             case CHIANGSAEN_20:
-                return Gdx.files.internal("com/github/skyousuke/gdxutils/font/chiangsaen-20.fnt");
+                return Gdx.files.internal("font/chiangsaen-20.fnt");
             case CHIANGSAEN_64:
-                return Gdx.files.internal("com/github/skyousuke/gdxutils/font/chiangsaen-64.fnt");
+                return Gdx.files.internal("font/chiangsaen-64.fnt");
             default:
                 throw new IllegalStateException("the execution flow must not reach here!");
         }
