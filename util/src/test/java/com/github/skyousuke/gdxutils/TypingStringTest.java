@@ -10,19 +10,19 @@ public class TypingStringTest {
     @Test
     public void notifyListener_CountingInvocation_CorrectInvocationCount() {
         TypingString typingString = new TypingString("text", 1.0f);
-        Runnable listener = Mockito.mock(Runnable.class);
+        TypingStringListener listener = Mockito.mock(TypingStringListener.class);
         typingString.setListener(listener);
-        Mockito.verify(listener, Mockito.times(0)).run();
+        Mockito.verify(listener, Mockito.times(0)).onTyping(Mockito.anyChar());
         typingString.update(0.5f);
-        Mockito.verify(listener, Mockito.times(0)).run();
+        Mockito.verify(listener, Mockito.times(0)).onTyping(Mockito.anyChar());
         typingString.update(0.5f);
-        Mockito.verify(listener, Mockito.times(1)).run();
+        Mockito.verify(listener, Mockito.times(1)).onTyping(Mockito.anyChar());
         typingString.update(1.0f);
-        Mockito.verify(listener, Mockito.times(2)).run();
+        Mockito.verify(listener, Mockito.times(2)).onTyping(Mockito.anyChar());
         typingString.update(1.0f);
-        Mockito.verify(listener, Mockito.times(3)).run();
+        Mockito.verify(listener, Mockito.times(3)).onTyping(Mockito.anyChar());
         typingString.update(1.0f);
-        Mockito.verify(listener, Mockito.times(4)).run();
+        Mockito.verify(listener, Mockito.times(4)).onTyping(Mockito.anyChar());
     }
 
 

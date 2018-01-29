@@ -122,24 +122,9 @@ public class ThaiFontCache extends BitmapFontCache {
         return glyph != null ? glyph : getFont().getData().missingGlyph;
     }
 
-    private int getGlyphId(GlyphLayout.GlyphRun run, int runIndex) {
-        if (runIndex < 0 || runIndex > run.glyphs.size - 1)
-            return -1;
-
-        final BitmapFont.Glyph glyph = run.glyphs.get(runIndex);
-        if (glyph != null)
-            return glyph.id;
-        else
-            return -1;
-    }
-
     private void fixUpper(GlyphLayout.GlyphRun run, int runIndex) {
-        final int penultimateId = getGlyphId(run, runIndex - 2);
-        final int previousId = getGlyphId(run, runIndex - 1);
         final int id = getGlyphId(run, runIndex);
-        final int nextId = getGlyphId(run, runIndex + 1);
-
-        final int characterType = findCharacterType(penultimateId, previousId, id, nextId);
+        final int characterType = findCharacterType(run, runIndex, id);
         run.glyphs.set(runIndex, getGlyph(id, characterType));
     }
 
@@ -153,31 +138,50 @@ public class ThaiFontCache extends BitmapFontCache {
             run.glyphs.set(runIndex - 1, getGlyph(previousId, CharacterTypes.NO_LOWER_CURVES));
     }
 
-    private static int findCharacterType(int penultimateId, int previousId, int id, int nextId) {
-        if (isAboveCharacter(id)) {
-            return findAboveCharacterType(previousId);
+    private static int getGlyphId(GlyphLayout.GlyphRun run, int runIndex) {
+        if (runIndex < 0 || runIndex > run.glyphs.size - 1)
+            return -1;
+
+        final BitmapFont.Glyph glyph = run.glyphs.get(runIndex);
+        if (glyph != null)
+            return glyph.id;
+        else
+            return -1;
+    }
+
+    private static int findCharacterType(GlyphLayout.GlyphRun run, int runIndex, int currentId) {
+        int baseId = -1;
+        for (int i = runIndex - 1; i >= 0; i--) {
+            baseId = getGlyphId(run, i);
+            if (!isAboveCharacter(baseId) && !isTopCharacter(baseId) && !isBottomCharacter(baseId) && baseId != -1)
+                break;
         }
-        if (isTopCharacter(id)) {
-            return findTopCharacterType(penultimateId, previousId, nextId);
+        if (baseId != -1) {
+            if (isAboveCharacter(currentId)) {
+                return findAboveCharacterType(baseId);
+            }
+            if (isTopCharacter(currentId)) {
+                return findTopCharacterType(baseId, getGlyphId(run, runIndex - 1), getGlyphId(run, runIndex + 1));
+            }
         }
         return CharacterTypes.DEFAULT;
     }
 
-    private static int findAboveCharacterType(int previousId) {
-        if (isTallCharacter(previousId))
+    private static int findAboveCharacterType(int baseId) {
+        if (isTallCharacter(baseId))
             return CharacterTypes.ABOVE_LEFT;
         else
             return CharacterTypes.ABOVE;
     }
 
-    private static int findTopCharacterType(int penultimateId, int previousId, int nextTd) {
+    private static int findTopCharacterType(int baseId, int previousId, int nextTd) {
         if (isAboveCharacter(previousId) || nextTd == ThaiUnicode.SARA_AM) {
-            if (isTallCharacter(penultimateId))
+            if (isTallCharacter(baseId))
                 return CharacterTypes.TOP_LEFT;
             else
                 return CharacterTypes.TOP;
         }
-        return findAboveCharacterType(previousId);
+        return findAboveCharacterType(baseId);
     }
 
     private static boolean isTopCharacter(int id) {

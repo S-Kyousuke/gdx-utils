@@ -11,14 +11,15 @@ public class TypingString implements CharSequence {
     private float timeAccumulator;
     private String stringCache;
     private int characterIndex;
-    private Runnable listener;
+    private TypingStringListener listener;
     private float typingRate;
 
     public TypingString(CharSequence fullCharSequence, float characterPerSecond) {
         this.fullCharSequence = fullCharSequence;
         this.characterPerSecond = characterPerSecond;
         whitespaceSpeedScale = 0.25f;
-        updateTypingRate(fullCharSequence.charAt(0));
+        if (fullCharSequence.length() > 0)
+            updateTypingRate(fullCharSequence.charAt(0));
         stringCache = "";
     }
 
@@ -31,7 +32,8 @@ public class TypingString implements CharSequence {
             timeAccumulator -= typingRate;
             characterIndex++;
             updateTypingRate(character);
-            notifyListener();
+            if (listener != null)
+                listener.onTyping(character);
         }
     }
 
@@ -44,25 +46,22 @@ public class TypingString implements CharSequence {
 
     public void setCharacterPerSecond(float characterPerSecond) {
         this.characterPerSecond = characterPerSecond;
-        updateTypingRate(fullCharSequence.charAt(characterIndex));
+        if (characterIndex < fullCharSequence.length())
+            updateTypingRate(fullCharSequence.charAt(characterIndex));
     }
 
     public void setWhitespaceSpeedScale(float whitespaceSpeedScale) {
         this.whitespaceSpeedScale = whitespaceSpeedScale;
-        updateTypingRate(fullCharSequence.charAt(characterIndex));
+        if (characterIndex < fullCharSequence.length())
+            updateTypingRate(fullCharSequence.charAt(characterIndex));
     }
 
-    public void setListener(Runnable listener) {
+    public void setListener(TypingStringListener listener) {
         this.listener = listener;
     }
 
     public boolean isFinished() {
         return characterIndex == fullCharSequence.length();
-    }
-
-    private void notifyListener() {
-        if (listener != null)
-            listener.run();
     }
 
     @Override

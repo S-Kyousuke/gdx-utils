@@ -12,6 +12,10 @@
     <extend-configuration-property name="gdx.files.classpath" value="font/chiangsaen-20.png" />
     <extend-configuration-property name="gdx.files.classpath" value="font/chiangsaen-64.fnt" />
     <extend-configuration-property name="gdx.files.classpath" value="font/chiangsaen-64.png" />
+    <extend-configuration-property name="gdx.files.classpath" value="font/chiangsaen-20-no-shadow.fnt" />
+    <extend-configuration-property name="gdx.files.classpath" value="font/chiangsaen-20-no-shadow.png" />
+    <extend-configuration-property name="gdx.files.classpath" value="font/mahaniyom-bao-no-shadow.fnt" />
+    <extend-configuration-property name="gdx.files.classpath" value="font/mahaniyom-bao-no-shadow.png" />
     <extend-configuration-property name="gdx.files.classpath" value="skin/default.atlas" />
     <extend-configuration-property name="gdx.files.classpath" value="skin/default.json" />
     <extend-configuration-property name="gdx.files.classpath" value="skin/default.fnt" />
