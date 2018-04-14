@@ -1,0 +1,2 @@
+javadoc command line arguments
+-link https://docs.oracle.com/javaee/6/api/ -link https://libgdx.badlogicgames.com/nightlies/docs/api/ -header "gdx-utils-0.0.17" -windowtitle  "gdx-utils API"

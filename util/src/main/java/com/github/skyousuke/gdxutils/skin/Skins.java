@@ -33,8 +33,7 @@ public enum Skins {
 
     private void configSkin(Skin skin) {
         if (this == DEFAULT_THAI) {
-            BitmapFont thaiFont = new ThaiFont(Gdx.files.internal("skin/default-thai.fnt"),
-                    new ThaiFontLoader.ThaiFontParameter(-3, 5, 4, 6));
+            BitmapFont thaiFont = new ThaiFont(skin.getFont("default"), new ThaiFontLoader.ThaiFontParameter(-3, 5, 4, 6));
             SkinUtils.replaceFont(skin, "default", thaiFont);
         }
     }
@@ -42,8 +41,9 @@ public enum Skins {
     private FileHandle getFile() {
         switch (this) {
             case DEFAULT:
-            case DEFAULT_THAI:
                 return Gdx.files.internal("skin/default.json");
+            case DEFAULT_THAI:
+                return Gdx.files.internal("skin/default-thai.json");
             default:
                 throw new IllegalStateException("the execution flow must not reach here!");
         }

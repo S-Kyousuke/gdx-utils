@@ -17,13 +17,13 @@ allprojects {
   
 **Core dependency**
 ```
-compile "com.github.skyousuke:gdx-utils:0.0.16"
+compile "com.github.skyousuke:gdx-utils:0.0.17"
 ```
 
 **Html dependency** (only if you are using HTML)
 
 ```
-compile "com.github.skyousuke:gdx-utils:0.0.16:sources"
+compile "com.github.skyousuke:gdx-utils:0.0.17:sources"
 ```
 module XML (GdxDefinition.gwt.xml)
 ```
