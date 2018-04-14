@@ -1,0 +1,43 @@
+
+batchmonitor-ui.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+arrow
+  rotate: false
+  xy: 2, 2
+  size: 5, 6
+  orig: 5, 6
+  offset: 0, 0
+  index: -1
+circle
+  rotate: false
+  xy: 132, 86
+  size: 18, 18
+  orig: 18, 18
+  offset: 0, 0
+  index: -1
+arial_12
+  rotate: false
+  xy: 2, 40
+  size: 128, 64
+  orig: 128, 64
+  offset: 0, 0
+  index: -1
+round_rect
+  rotate: false
+  xy: 2, 10
+  size: 28, 28
+  split: 13, 13, 14, 13
+  pad: 14, 13, 14, 13
+  orig: 28, 28
+  offset: 0, 0
+  index: -1
+white
+  rotate: false
+  xy: 32, 37
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1

@@ -19,7 +19,7 @@ allprojects {
     apply plugin: "eclipse"
     apply plugin: "idea"
 
-    version = '0.0.17'
+    version = '0.0.18'
     ext {
         appName = "gdx-utils"
         gdxVersion = '1.9.8'
@@ -82,6 +82,7 @@ project(":util") {
     dependencies {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile 'com.google.guava:guava-gwt:20.0'
+        compile 'com.j2html:j2html:1.2.2'
         compile 'com.google.gwt:gwt-user:2.8.0'
 
         testCompile 'junit:junit:4.12'

@@ -3,7 +3,7 @@ apply plugin: "java"
 sourceCompatibility = 1.6
 sourceSets.main.java.srcDirs = [ "src/" ]
 
-project.ext.mainClassName = "com.github.skyousuke.gdxutils.tool.DesktopLauncher"
+project.ext.mainClassName = "com.github.skyousuke.gdxutils.tool.ToolLauncher"
 project.ext.assetsDir = new File("../core/assets")
 
 
