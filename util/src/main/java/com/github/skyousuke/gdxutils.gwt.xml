@@ -8,10 +8,6 @@
         <exclude name="IOUtils.java"/> <!-- Reason: No DeflaterOutputStream -->
     </source>
 
-    <extend-configuration-property name="gdx.reflect.include" value="com.github.skyousuke.gdxutils.batchmonitor.FieldObject" />
-    <extend-configuration-property name="gdx.reflect.include" value="com.github.skyousuke.gdxutils.batchmonitor.BatchFinder" />
-    <extend-configuration-property name="gdx.reflect.include" value="com.github.skyousuke.gdxutils.batchmonitor.BatchMonitor" />
-
     <extend-configuration-property name="gdx.files.classpath" value="font/chiangsaen-16.fnt" />
     <extend-configuration-property name="gdx.files.classpath" value="font/chiangsaen-16.png" />
     <extend-configuration-property name="gdx.files.classpath" value="font/chiangsaen-20.fnt" />
@@ -26,6 +22,8 @@
     <extend-configuration-property name="gdx.files.classpath" value="skin/default.json" />
     <extend-configuration-property name="gdx.files.classpath" value="skin/default.fnt" />
     <extend-configuration-property name="gdx.files.classpath" value="skin/default.png" />
+    <extend-configuration-property name="gdx.files.classpath" value="skin/default-thai.atlas" />
+    <extend-configuration-property name="gdx.files.classpath" value="skin/default-thai.json" />
     <extend-configuration-property name="gdx.files.classpath" value="skin/default-thai.fnt" />
     <extend-configuration-property name="gdx.files.classpath" value="skin/default-thai.png" />
     <extend-configuration-property name="gdx.files.classpath" value="batchmonitor/arial_12.fnt" />

@@ -18,6 +18,10 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 import java.nio.IntBuffer;
 
+/**
+ * SpriteBatch profiling tool
+ * <p style="color:red">Not support WebGL Platform</p>
+ */
 public class BatchMonitor implements ApplicationListener {
 
     private ApplicationListener application;

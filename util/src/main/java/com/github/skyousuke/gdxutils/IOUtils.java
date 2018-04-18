@@ -11,7 +11,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 
 import java.nio.IntBuffer;
 /**
- * Read-Write files to various format;
+ * Read-Write files to various format.
  * <p style="color:red">Not support WebGL Platform</p>
  */
 public class IOUtils {

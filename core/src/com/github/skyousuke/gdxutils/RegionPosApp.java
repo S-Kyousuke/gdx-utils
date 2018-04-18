@@ -1,6 +1,5 @@
 package com.github.skyousuke.gdxutils;
 
-import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -8,7 +7,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.github.skyousuke.gdxutils.font.ThaiFonts;
 
@@ -31,37 +29,8 @@ public class RegionPosApp extends GdxApp {
         renderer = new ShapeRenderer();
         camera = new OrthographicCamera();
 
-        Gdx.app.setLogLevel(Application.LOG_INFO);
-
-        Gdx.app.log("", (NumberFormat.formatDecimal(777.575f, 2)));
-        Gdx.app.log("", (NumberFormat.formatDecimal(777.575, 2)));
-        Gdx.app.log("", (NumberFormat.formatDecimal(777.578905f, 5)));
-        Gdx.app.log("", (NumberFormat.formatDecimal(777.57890501, 5)));
-
         font = ThaiFonts.CHIANGSAEN_64.createFont();
-        Gdx.app.log("", "" + MathUtils.nextPowerOfTwo(1));
-        Gdx.app.log("", "" + MathUtils.nextPowerOfTwo(3));
-        Gdx.app.log("", "" + MathUtils.nextPowerOfTwo(5));
-        Gdx.app.log("", "" + MathUtils.nextPowerOfTwo(6));
-        Gdx.app.log("", "" + MathUtils.nextPowerOfTwo(51));
-        Gdx.app.log("", "" + MathUtils.nextPowerOfTwo(33));
-
-//        else
-//            Gdx.app.log("", (NumberFormat.formatFloat(1234.57890, 2)));
-
-//
-//
-//        Gdx.app.setLogLevel(Application.LOG_INFO);
-//
-//        if (Gdx.app.getType() == Application.ApplicationType.WebGL) {
-//            com.google.gwt.i18n.client.NumberFormat nfm =
-//                    com.google.gwt.i18n.client.NumberFormat .getFormat("#,###.0000");
-//            Gdx.app.log("", nfm.format(123457810.1254823));
-//        } else {
-//            DecimalFormat dfm = new DecimalFormat("#,###.0000");
-//            Gdx.app.log("", dfm.format(123457810.1254823));
-//        }
-}
+    }
 
     @Override
     public void render() {
@@ -102,7 +71,6 @@ public class RegionPosApp extends GdxApp {
         font.dispose();
         renderer.dispose();
     }
-
 
 
 }
